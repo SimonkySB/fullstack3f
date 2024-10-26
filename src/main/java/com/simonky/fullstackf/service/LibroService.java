@@ -27,23 +27,6 @@ public class LibroService {
         return libroRepository.save(libro);
     }
 
-    public Libro editarLibro(Long id, Libro newLibro){
-        return libroRepository.findById(id)
-            .map(libro -> {
-                
-                libro.setTitulo(newLibro.getTitulo());
-                libro.setAutor(newLibro.getAutor());
-                libro.setAnioPublicacion(newLibro.getAnioPublicacion());
-                libro.setGenero(newLibro.getGenero());
-
-                return libroRepository.save(libro);
-            })
-            .orElseGet(() -> {
-                return libroRepository.save(newLibro);
-            });
-    }
-
-
     public void eliminarLibro(Long id){
         libroRepository.deleteById(id);
     }
